@@ -1,470 +1,447 @@
-2001-02-07  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* skip-autoheader: New file.
-
-2001-02-06  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* terminal.c (rl_get_screen_size): New function.
-	* readline.h: Provide declaration.
-
-	* Makefile.in (install, uninstall): For Octave, do nothing.
-
-	* Update to readline-4.2-beta1.
-
-2000-02-25  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* support/config.guess: Update to latest from subversions.gnu.org.
-	* support/config.sub: Likewise.  Recognize sv1-cray as a basic_machine.
-
-2000-01-26  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* acconfig.h: Use #undef GWINSZ_IN_SYS_IOCTL, not
-	TIOCGWINSZ_IN_SYS_IOCTL to match AC_DEFINE in aclocal.m4.
-
-1999-10-13  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* terminal.c (rl_resize_terminal): Import from readline 4.0.
-
-Thu May 27 21:47:26 1999  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* histfile.c [__CYGWIN__]: Define O_BINARY if not already defined.
-
-Mon Aug 31 12:07:02 1998  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* config.sub: Accept armv4 everywhere arm is allowed.
-
-Wed Mar  4 14:59:11 1998  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* parens.c (rl_insert_close): Make time delay for showing matching
-	parentheses 0.5 seconds.
-
-Sun Jan 25 02:19:15 1998  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* aclocal.m4 (BASH_REINSTALL_SIGHANDLERS, BASH_FUNC_STRCOLL):
-	Provide defaults for cross compiling.
-
-Fri Jan 16 21:02:58 1998  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* Makefile.in (install, uninstall): For Octave, do nothing.
-
-Tue Jan 13 14:59:56 1998  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* readline.h (rl_dispatching): Add missing extern in declaration.
-
-Thu Jul 10 18:26:56 1997  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* acconfig.h: Add #undefs for FIONREAD_IN_SYS_IOCTL,
-	HAVE_BSD_SIGNALS, HAVE_LSTAT, HAVE_POSIX_SIGNALS,
-	HAVE_POSIX_SIGSETJMP, HAVE_USG_SIGHOLD,
-	MUST_REINSTALL_SIGHANDLERS, SPEED_T_IN_SYS_TYPES, STRCOLL_BROKEN,
-	STRUCT_DIRENT_HAS_D_FILENO, and STRUCT_DIRENT_HAS_D_INO.
-
-Thu May 22 16:00:10 1997  John W. Eaton  <jwe@bevo.che.wisc.edu>
-
-	* history.h, readline.h [__cplusplus]: Add extern "C" declarations.
-
-	* rlconf.h: Enable paren matching.
-
-Tue Mar 23 14:36:51 1993  Brian Fox  (bfox@eos.crseo.ucsb.edu)
-
-	* readline.c (rl_copy): Changed name to rl_copy_text.
-
-Mon Mar 22 19:16:05 1993  Brian Fox  (bfox@eos.crseo.ucsb.edu)
-
-	* dispose_cmd.c, several other files. Declare dispose_xxx () as
-	"void".
-
-	* builtins/hashcom.h: Make declarations of hashed_filenames be
-	"extern" to keep the SGI compiler happy.
-
-	* readline.c (rl_initialize_everything): Assign values to
-	out_stream and in_stream immediately, since
-	output_character_function () can be called before
-	readline_internal () is called.
-
-Tue Dec  8 09:30:56 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (rl_init_terminal) Set PC from BC, not from *buffer.
-
-Mon Nov 30 09:35:47 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (invoking_keyseqs_in_map, rl_parse_and_bind) Allow
-	backslash to quote characters, such as backslash, double quote,
-	and space. Backslash quotes all character indiscriminately.
-
-	* funmap.c (vi_keymap) Fix type in "vi-replace" declaration.
-
-Fri Nov 20 10:55:05 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (init_terminal_io, rl_prep_terminal): FINALLY!
-	Declare and use termcap variable `ospeed' when setting up terminal
-	parameters.
-
-Thu Oct  8 08:53:07 1992  Brian J. Fox  (bfox@helios)
-
-	* Makefile, this directory: Include (as links to the canonical
-	sources), tilde.c, tilde.h, posixstat.h and xmalloc.c.
-
-Tue Sep 29 13:07:21 1992  Brian J. Fox  (bfox@helios)
-
-	* readline.c (init_terminal_io) Don't set arrow keys if the key
-	sequences that represent them are already set.
-
-	* readline.c (rl_function_of_keyseq) New function returns the first
-	function (or macro) found while searching a key sequence.
-
-Mon Sep 28 00:34:04 1992  Brian J. Fox  (bfox@helios)
-
-	* readline.c (LibraryVersion) New static char * contains current
-	version number.  Version is at 2.0.
-
-	* readline.c (rl_complete_internal): Incorporated clean changes
-	from gilmore (gnu@cygnus.com) to support quoted substrings within
-	completion functions.
-
-	* readline.c (many locations) Added support for the _GO32_,
-	whatever that is.  Patches supplied by Cygnus, typed in by hand,
-	with cleanups.
-
-Sun Aug 16 12:46:24 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (init_terminal_io): Find out the values of the keypad
-	arrows and bind them to appropriate RL functions if present.
-
-Mon Aug 10 18:13:24 1992  Brian Fox  (bfox@cubit)
-
-	* history.c (stifle_history): A negative argument to stifle
-	becomes zero.
-
-Tue Jul 28 09:28:41 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (rl_variable_bind): New local structure describes
-	booleans by name and address; code in rl_variable_bind () looks at
-	structure to set simple variables.
-
-	* parens.c (rl_insert_close): New variable rl_blink_matching_paren
-	is non-zero if we want to blink the matching open when a close is
-	inserted.  If FD_SET is defined, rl_blink_matching_paren defaults
-	to 1, else 0.  If FD_SET is not defined, and
-	rl_blink_matching_paren is non-zero, the close character(s) are/is
-	simply inserted.
-
-Wed Jul 22 20:03:59 1992  Brian Fox  (bfox@cubit)
-
-	* history.c, readline.c, vi_mode.c: Cause the functions strchr ()
-	and strrchr () to be used instead of index () and rindex ()
-	throughout the source.
-
-Mon Jul 13 11:34:07 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c: (rl_variable_bind) New variable "meta-flag" if "on"
-	means force the use of the 8th bit as Meta bit.  Internal variable
-	is called meta_flag.
-
-Thu Jul  9 10:37:56 1992  Brian Fox  (bfox@cubit)
-
-	* history.c (get_history_event) Change INDEX to LOCAL_INDEX.  If
-	compiling for the shell, allow shell metacharacters to separate
-	history tokens as they would for shell tokens.
-
-Sat Jul  4 19:29:12 1992  Brian Fox  (bfox@cubit)
-
-	* vi_keymap.c: According to Posix, TAB self-inserts instead of
-	doing completion.
-
-	* vi_mode.c: (rl_vi_yank_arg) Enter VI insert mode after yanking
-	an arg from the previous line.
-
-	* search.c: New file takes over vi style searching and implements
-	non-incremental searching the history.
-
-	Makefile: Add search.c and search.o.
-
-	funmap.c: Add names for non-incremental-forward-search-history and
-	non-incremental-reverse-search-history.
-
-	readline.h: Add extern definitions for non-incremental searching.
-
-	vi_mode.c: Remove old search code; add calls to code in search.c.
-
-Fri Jul  3 10:36:33 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c (rl_delete_horizontal_space); New function deletes
-	all whitespace surrounding point.
-
-	funmap.c: Add "delete-horizontal-space".
-	emacs_keymap.c: Put rl_delete_horizontal_space () on M-\.
-
-	* readline.c (rl_set_signals, rl_clear_signals); New function
-	rl_set_sighandler () is either defined in a Posix way (if
-	HAVE_POSIX_SIGNALS is defined) or in a BSD way.  Function is
-	called from rl_set_signals () and rl_clear_signals ().
-
-Fri May  8 12:50:15 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c: (readline_default_bindings) Do comparisons with
-	_POSIX_VDISABLE casted to `unsigned char'.  Change tty characters
-	to be unsigned char.
-
-Thu Apr 30 12:36:35 1992  Brian Fox  (bfox@cubit)
-
-	* readline.c: (rl_getc) Handle "read would block" error on
-	non-blocking IO streams.
-
-	* readline.c: (rl_signal_handler): Unblock only the signal that we
-	have caught, not all signals.
-
-Sun Feb 23 03:33:09 1992  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: Many functions.  Use only the macros META_CHAR and
-	UNMETA to deal with meta characters.  Prior to this, we used
-	numeric values and tests.
-
-	* readline.c (rl_complete_internal) Report exactly the number of
-	possible completions, not the number + 1.
-
-	* vi_mode.c (rl_do_move) Do not change the cursor position when
-	using `cw' or `cW'.
-
-	* vi_mode.c (rl_vi_complete) Enter insert mode after completing
-	with `*' or `\'.
-
-Fri Feb 21 05:58:18 1992  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (rl_dispatch) Increment rl_key_sequence_length for
-	meta characters that map onto ESC map.
-
-Mon Feb 10 01:41:35 1992  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* history.c (history_do_write) Build a buffer of all of the lines
-	to write and write them in one fell swoop (lower overhead than
-	calling write () for each line).  Suggested by Peter Ho.
-
-	* readline.c: Include hbullx20 as well as hpux for determining
-	USGr3ness.
-
-	* readline.c (rl_unix_word_rubout) As per the "Now REMEMBER"
-	comment, pass arguments to rl_kill_text () in the correct order to
-	preserve prepending and appending of killed text.
-
-	* readline.c (rl_search_history) malloc (), realloc (), and free
-	() SEARCH_STRING so that there are no static limits on searching.
-
-	* vi_mode.c (rl_vi_subst) Don't forget to end the undo group.
-
-Fri Jan 31 14:51:02 1992  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (rl_signal_handler): Zero the current history entry's
-	pointer after freeing the undo_list when SIGINT received.
-	Reformat a couple of functions.
-
-Sat Jan 25 13:47:35 1992  Brian Fox  (bfox at bears)
-
-        * readline.c (parser_if): free () TNAME after use.
-
-Tue Jan 21 01:01:35 1992  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (rl_redisplay) and (rl_character_len): Display
-	Control characters as "^c" and Meta characters as "\234", instead
-	of "C-C" and "M-C".
-
-Sun Dec 29 10:59:00 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (init_terminal_io) Default to environment variables
-	LINES and COLUMNS before termcap entry values.  If all else fails,
-	then assume 80x24 terminal.
-
-Sat Dec 28 16:33:11 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: If this machine is USG and it is hpux, then define
-	USGr3.
-
-	* history.c: Cosmetic fixes.
-
-Thu Nov 21 00:10:12 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* vi_mode.c: (rl_do_move) Place cursor at end of line, never at
-	next to last character.
-
-Thu Nov 14 05:08:01 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* history.c (get_history_event) Non-anchored searches can have a
-	return index of greater than zero from get_history_event ().
-
-Fri Nov  1 07:02:13 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (rl_translate_keyseq) Make C-? translate to RUBOUT
-	unconditionally.
-
-Mon Oct 28 11:34:52 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c; Use Posix directory routines and macros.
-
-	* funmap.c; Add entry for call-last-kbd-macro.
-
-	* readline.c (rl_prep_term); Use system EOF character on POSIX
-	systems also.
-
-Thu Oct  3 16:19:53 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c; Make a distinction between having a TERMIOS tty
-	driver, and having POSIX signal handling.  You might one without
-	the other.  New defines used HAVE_POSIX_SIGNALS, and
-	TERMIOS_TTY_DRIVER.
-
-Tue Jul 30 22:37:26 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: rl_getc () If a call to read () returns without an
-	error, but with zero characters, the file is empty, so return EOF.
-
-Thu Jul 11 20:58:38 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: (rl_get_next_history, rl_get_previous_history)
-	Reallocate the buffer space if the line being moved to is longer
-	the the current space allocated.  Amazing that no one has found
-	this bug until now.
-
-Sun Jul  7 02:37:05 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c:(rl_parse_and_bind) Allow leading whitespace.
-	  Make sure TERMIO and TERMIOS systems treat CR and NL
-	  disctinctly.
-	
-Tue Jun 25 04:09:27 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: Rework parsing conditionals to pay attention to the
-	prior states of the conditional stack.  This makes $if statements
-	work correctly.
-
-Mon Jun 24 20:45:59 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: support for displaying key binding information
-	includes the functions rl_list_funmap_names (),
-	invoking_keyseqs_in_map (), rl_invoking_keyseqs (),
-	rl_dump_functions (), and rl_function_dumper ().
-
-	funmap.c: support for same includes rl_funmap_names ().
-
-	readline.c, funmap.c: no longer define STATIC_MALLOC.  However,
-	update both version of xrealloc () to handle a null pointer.
-
-Thu Apr 25 12:03:49 1991  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* vi_mode.c (rl_vi_fword, fWord, etc.  All functions use
-	the macro `isident()'.  Fixed movement bug which prevents
-	continious movement through the text.
-
-Fri Jul 27 16:47:01 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (parser_if) Allow "$if term=foo" construct.
-
-Wed May 23 16:10:33 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c (rl_dispatch) Correctly remember the last command
-	executed.  Fixed typo in username_completion_function ().
-
-Mon Apr  9 19:55:48 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: username_completion_function (); For text passed in
-	with a leading `~', remember that this could be a filename (after
-	it is completed).
-
-Thu Apr  5 13:44:24 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: rl_search_history (): Correctly handle case of an
-	unfound search string, but a graceful exit (as with ESC).
-
-	* readline.c: rl_restart_output ();  The Apollo passes the address
-	of the file descriptor to TIOCSTART, not the descriptor itself.
-
-Tue Mar 20 05:38:55 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* readline.c: rl_complete (); second call in a row causes possible
-	completions to be listed.
-
-	* readline.c: rl_redisplay (), added prompt_this_line variable
-	which is the first character character following \n in prompt.
-
-Sun Mar 11 04:32:03 1990  Brian Fox  (bfox at gnuwest.fsf.org)
-
-	* Signals are now supposedly handled inside of SYSV compilation.
-
-Wed Jan 17 19:24:09 1990  Brian Fox  (bfox at sbphy.ucsb.edu)
-
-	* history.c: history_expand (); fixed overwriting memory error,
-	added needed argument to call to get_history_event ().
-
-Thu Jan 11 10:54:04 1990  Brian Fox  (bfox at sbphy.ucsb.edu)
-
-	* readline.c: added mark_modified_lines to control the
-	display of an asterisk on modified history lines.  Also
-	added a user variable called mark-modified-lines to the
-	`set' command.
-
-Thu Jan  4 10:38:05 1990  Brian Fox  (bfox at sbphy.ucsb.edu)
-
-	* readline.c: start_insert ().  Only use IC if we don't have an im
-	capability.
-
-Fri Sep  8 09:00:45 1989  Brian Fox  (bfox at aurel)
-
-	* readline.c: rl_prep_terminal ().  Only turn on 8th bit
-	  as meta-bit iff the terminal is not using parity.
-
-Sun Sep  3 08:57:40 1989  Brian Fox  (bfox at aurel)
-
-	* readline.c: start_insert ().  Uses multiple
-	  insertion call in cases where that makes sense.
-
-	  rl_insert ().  Read type-ahead buffer for additional
-	  keys that are bound to rl_insert, and insert them
-	  all at once.  Make insertion of single keys given
-	  with an argument much more efficient.
-
-Tue Aug  8 18:13:57 1989  Brian Fox  (bfox at aurel)
-
-	* readline.c: Changed handling of EOF.  readline () returns
-	 (char *)EOF or consed string.  The EOF character is read from the
-	 tty, or if the tty doesn't have one, defaults to C-d.
-
-	* readline.c: Added support for event driven programs.
-	  rl_event_hook is the address of a function you want called
-	  while Readline is waiting for input.
-
-	* readline.c: Cleanup time.  Functions without type declarations
-	  do not use return with a value.
-
-	* history.c: history_expand () has new variable which is the
-	  characters to ignore immediately following history_expansion_char.
-
-Sun Jul 16 08:14:00 1989  Brian Fox  (bfox at aurel)
-
-	* rl_prep_terminal ()
-	  BSD version turns off C-s, C-q, C-y, C-v.
-
-	* readline.c -- rl_prep_terminal ()
-	  SYSV version hacks readline_echoing_p.
-	  BSD version turns on passing of the 8th bit for the duration
-	  of reading the line.
-
-Tue Jul 11 06:25:01 1989  Brian Fox  (bfox at aurel)
-
-	* readline.c: new variable rl_tilde_expander.
-	  If non-null, this contains the address of a function to call if
-	  the standard meaning for expanding a tilde fails.  The function is
-	  called with the text sans tilde (as in "foo"), and returns a
-	  malloc()'ed string which is the expansion, or a NULL pointer if
-	  there is no expansion. 
-
-	* readline.h - new file chardefs.h
-	  Separates things that only readline.c needs from the standard
-	  header file publishing interesting things about readline.
-
-	* readline.c:
-	  readline_default_bindings () now looks at terminal chararacters
-	  and binds those as well.
-
-Wed Jun 28 20:20:51 1989  Brian Fox  (bfox at aurel)
-
-	* Made readline and history into independent libraries.
-
+[Readline-specific changelog.  Descriptions of changes to the source are
+ found in the bash changelog.]
+
+				    6/9
+				    ---
+Makefile.in
+	- quote value of ${INSTALL_DATA} when passing it to makes in
+	  subdirectories
+
+				    7/1
+				    ---
+Makefile.in
+	- don't pass INSTALL_DATA to a make in the `doc' subdirectory; let
+	  autoconf set the value itself in the Makefile
+	- removed a stray `-' before $(RANLIB) in the `install' recipe
+
+doc/Makefile.in
+	- add a VPATH assignment so the documentation is not remade if it's
+	  already up-to-date in the distribution
+
+configure.in
+	- call AC_SUBST(LOCAL_LDFLAGS), since Makefile.in contains
+	  @LOCAL_LDFLAGS@
+
+				    7/9
+				    ---
+
+config.h.in
+	- add define lines for STRUCT_WINSIZE_IN_SYS_IOCTL and
+	  STRUCT_WINSIZE_IN_TERMIOS
+
+configure.in
+	- call BASH_STRUCT_WINSIZE to look for the definition of
+	  `struct winsize'
+
+				   7/17
+				   ----
+configure.in
+	- call AC_MINIX
+
+config.h.in
+	- add define line for AC_MINIX
+
+				   7/18
+				   ----
+Makefile.in
+	- add `install-shared' and `uninstall-shared' targets
+
+				    8/4
+				    ---
+Makefile.in
+	- install and uninstall libhistory.a in the `install' and
+	  `uninstall' targets
+
+				    9/4
+				    ---
+configure.in
+	- bumped LIBVERSION up to 2.1.1, indicating that this is patch
+	  level 1 to release 2.1
+
+
+				   9/16
+				   ----
+Makefile.in
+	- `make distclean' now descends into the `examples' subdir
+
+doc/Makefile.in
+	- the `distclean' and `maintainer-clean' targets should remove
+	  Makefile
+
+examples/Makefile.in
+	- added the various clean targets
+
+				    4/2
+				    ---
+configure.in
+	- bumped LIBVERSION up to 2.2
+
+				   4/18
+				   ----
+[readline-2.2 released]
+
+				   4/20
+				   ----
+Makefile.in
+	- make `libhistory.a' a dependency of `install'
+	- fixed a typo in the recipe for `install' that copied libreadline.a
+	  to libhistory.old right after installing it
+
+				   4/27
+				   ----
+doc/Makefile.in
+	- install {readline,history}.info out of the source directory if
+	  they are not found in the current (build) directory -- only an
+	  issue if the libraries are built in a different directory than
+	  the source directory
+
+				    5/1
+				    ---
+support/shobj-conf
+	- script from the bash distribution to do shared object and library
+	  configuration
+
+shlib/Makefile.in
+	- new directory and makefile to handle building shared versions of
+	  libreadline and libhistory, controlled by support/shobj-conf
+
+				    5/7
+				    ---
+doc/Makefile.in
+	- set SHELL to /bin/sh, rather than relying on make to be correct
+
+				   5/14
+				   ----
+savestring.c
+	- new file, moved from shell.c, for backwards compatibility
+
+Makefile.in, shlib/Makefile.in
+	- make sure savestring.c is compiled and added to libreadline and
+	  libhistory
+
+[THERE ARE NO MORE #ifdef SHELL LINES IN THE C SOURCE FILES.]
+
+				   5/15
+				   ----
+README
+	- updated description of shared library creation for the new scheme
+
+[THERE ARE NO MORE #ifdef SHELL LINES IN ANY OF THE SOURCE FILES.]
+
+Makefile.in
+	- bumped SHLIB_MAJOR up to 4 since we've augmented the library
+	  API
+	- rlconf.h is now one of the installed headers, so applications can
+	  find out whether things like vi-mode are available in the installed
+	  libreadline
+
+				   5/20
+				   ----
+configure.in
+	- changed RL_LIBRARY_VERSION to 4.0 to match the version of the
+	  installed shared libraries
+
+				    6/5
+				    ---
+rlstdc.h
+	- new file
+
+Makefile.in
+	- rlstdc.h is now one of the installed headers
+
+				    8/3
+				    ---
+shlib/Makefile.in
+	- made the suffix rule that creates xx.so from xx.c write the
+	  compiler output to `a.o', which is then mv'd to xx.so, because
+	  some compilers (Sun WSpro 4.2, for example) don't allow any
+	  suffixes other than `.o' for `cc -c' (not even `a.out')
+
+				   9/15
+				   ----
+
+Makefile.in
+	- AR and ARFLAGS are now substituted by configure, used in recipes
+	  that build the libraries
+
+configure.in
+	- use AC_CHECK_PROG to check for ar
+	- set ARFLAGS if it has not already been set in the environment
+
+				   10/5
+				   ----
+Makefile.in
+	- removed savestring.o from object file list
+
+				   10/28
+				   -----
+shlib/Makefile.in
+	- don't use a fixed filename in the .c.so suffix rule to avoid
+	  problems with parallel makes
+
+				   12/21
+				   -----
+support/shlib-install
+	- new script to install shared readline and history libraries
+
+shlib/Makefile.in
+	- changed to call shlib-install for install and uninstall targets
+
+[readline-4.0-beta1 frozen]
+
+				   12/22
+				   -----
+configure.in
+	- call AC_SUBST for SHOBJ_XLDFLAGS and SHLIB_LIBS
+
+shlib/Makefile.in
+	- SHOBJ_XLDFLAGS and SHLIB_LIBS are now substituted by configure
+	- add $(SHLIB_LIBS) at end of command line that builds the shared
+	  libraries (currently needed only by AIX 4.2)
+
+				   12/31
+				   -----
+MANIFEST, MANIFEST.doc
+	- the TOC html files are no longer generated and no longer part of
+	  the distribution
+
+				 2/18/1999
+				 ---------
+configure.in
+	- set MAKE_SHELL to /bin/sh and substitute into the Makefiles
+
+Makefile.in,{doc,examples,shlib}/Makefile.in
+	- set SHELL from @MAKE_SHELL@
+
+[readline-4.0 released]
+
+				   3/11
+				   ----
+doc/Makefile.in
+	- removed references to HTMLTOC, since separate HTML table-of-contents
+	  files are no longer created
+
+examples/Makefile.in
+	- remove `*.exe' in clean target for MS-DOS
+
+Makefile.in
+	- make `readline' target depend on ./libreadline.a
+	- configure now substitutes TERMCAP_LIB into Makefile.in
+	- use ${TERMCAP_LIB} instead of -ltermcap in recipe for `readline'
+	- clean target now removes readline and readline.exe in case they
+	  get built
+
+configure.in
+	- use `pwd.exe' to set BUILD_DIR on MS-DOS DJGPP
+
+				   3/15
+				   ----
+support/shlib-install
+	- Irix 5.x and Irix 6.x should install shared libraries like Solaris 2
+	- changes for installing on hp-ux 1[01].x
+
+				   3/23
+				   ----
+configure.in
+	- make sure that the $CC argument to shobj-conf is quoted
+
+				    4/8
+				    ---
+
+xmalloc.h, rlprivate.h, rlshell.h
+	- new files
+
+Makefile.in,shlib/Makefile.in
+	- add dependencies on xmalloc.h, rlshell.h
+	- add xmalloc.h, rlprivate.h, rlshell.h to list of header files
+
+MANIFEST
+	- add xmalloc.h, rlprivate.h, rlshell.h
+
+				    4/9
+				    ---
+Makefile.in,shlib/Makefile.in
+	- add dependencies on rlprivate.h
+
+				   4/13
+				   ----
+doc/Makefile.in
+	- add variable, PSDVI, which is the desired resolution of the
+	  generated postscript files.  Set to 300 because I don't have
+	  any 600-dpi printers
+	- set LANGUAGE= before calling makeinfo, so messages are in English
+	- add rluserman.{info,dvi,ps,html} to appropriate variables
+	- add rules to create rluserman.{info,dvi,ps,html}
+	- install and uninstall rluserman.info, but don't update the directory
+	  file in $(infodir) yet
+
+MANIFEST
+	- add doc/rluserman.{texinfo,info,dvi,ps,html}
+
+				   4/30
+				   ----
+configure.in
+	- updated library version to 4.1
+
+				    5/3
+				    ---
+configure.in
+	- SHLIB_MAJOR and SHLIB_MINOR shared library version numbers are
+	  constructed from $LIBRARY_VERSION and substituted into Makefiles
+
+				    5/5
+				    ---
+support/shlib-install
+	- OSF/1 installs shared libraries like Solaris
+
+Makefile.in
+	- broke the header file install and uninstall into two new targets:
+	  install-headers and uninstall-headers
+	- install and uninstall depend on install-headers and uninstall-headers
+	  respectively
+	- changed install-shared and uninstall-shared targets to depend on
+	  install-headers and uninstall-headers, respectively, so users may
+	  choose to install only the shared libraries.  I'm not sure about
+	  the uninstall one yet -- maybe it should check whether or not
+	  the static libraries are installed and not remove the header files
+	  if they are
+
+				    9/3
+				    ---
+configure.in, config.h.in
+	- added test for memmove (for later use)
+	- changed version to 4.1-beta1
+
+				   9/13
+				   ----
+examples/rlfe.c
+	- Per Bothner's `rlfe' readline front-end program
+
+examples/Makefile.in
+	- added rules to build rlfe
+
+				   9/21
+				   ----
+support/shlib-install
+	- changes to handle FreeBSD-3.x elf or a.out shared libraries, which
+	  have different semantics and need different naming conventions
+
+				 1/24/2000
+				 ---------
+doc/Makefile.in
+	- remove *.bt and *.bts on `make clean'
+
+				    2/4
+				    ---
+
+
+configure.in
+	- changed LIBVERSION to 4.1-beta5
+
+				 3/17/2000
+				 ---------
+[readline-4.1 released]
+
+				   3/23
+				   ----
+Makefile.in
+	- remove the `-t' argument to ranlib in the install recipe; some
+	  ranlibs don't have it and attempt to create a file named `-t'
+
+				   3/27
+				   ----
+support/shlib-install
+	- install shared libraries unwritable by anyone on HP-UX
+	- changed symlinks to relative pathnames on all platforms
+
+shlib/Makefile.in
+	- added missing `includedir' assignment, substituted by configure
+
+Makefile.in
+	- added missing @SET_MAKE@ so configure can set $MAKE appropriately
+
+configure.in
+	- add call to AC_PROG_MAKE_SET
+
+				   8/30
+				   ----
+shlib/Makefile.in
+	- change the soname bound into the shared libraries, so it includes
+	  only the major version number.  If it includes the minor version,
+	  programs depending on it must be rebuilt (which may or may not be
+	  a bad thing)
+
+				    9/6
+				    ---
+examples/rlfe.c
+	- add -l option to log input and output (-a option appends to logfile)
+	- add -n option to set readline application name
+	- add -v, -h options for version and help information
+	- change a few things because getopt() is now used to parse arguments
+
+				   9/12
+				   ----
+support/shlib-install
+	- fix up the libname on HPUX 11
+
+				   10/18
+				   -----
+configure.in
+	- changed library version to 4.2-alpha
+
+				   10/30
+				   -----
+configure.in
+	- add -fsigned-char to LOCAL_CFLAGS for Linux running on the IBM
+	  S/390
+
+Makefile.in
+	- added new file, rltypedefs.h, installed by default with `make install'
+
+				   11/2
+				   ----
+compat.c
+	- new file, with backwards-compatibility function definitions
+
+Makefile.in,shlib/Makefile.in
+	- make sure that compat.o/compat.so are built and linked apppropriately
+
+support/shobj-conf
+	- picked up bash version, which means that shared libs built on
+	  linux and BSD/OS 4.x will have an soname that does not include
+	  the minor version number
+
+				   11/13
+				   -----
+examples/rlfe.c
+	- rlfe can perform filename completion for relative pathnames in the
+	  inferior process's context if the OS supports /proc/PID/cwd (linux
+	  does it OK, Solaris is slightly warped, none of the BSDs have it)
+
+				11/17/2000
+				----------
+[readline-4.2-alpha released]
+
+				   11/27
+				   -----
+Makefile.in,shlib/Makefile.in
+	- added dependencies for rltypedefs.h
+
+shlib/Makefile.in
+	- changed dependencies on histlib.h to $(topdir)/histlib.h
+
+				   1/22
+				   ----
+configure.in
+	- changed release version to 4.2-beta
+
+				    2/2
+				    ---
+examples/Makefile.in
+	- build histexamp as part of the examples
+
+				    2/5
+				    ---
+doc/Makefile.in
+	- don't remove the dvi, postscript, html, info, and text `objects'
+	  on a `make distclean', only on a `make maintainer-clean'
