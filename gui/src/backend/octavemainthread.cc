@@ -15,8 +15,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "OctaveMainThread.h"
-#include "OctaveLink.h"
+#include "octavemainthread.h"
+#include "octavelink.h"
 
 OctaveMainThread::OctaveMainThread (QObject * parent):QThread (parent)
 {

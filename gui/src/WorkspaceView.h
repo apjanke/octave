@@ -21,7 +21,7 @@
 #include <QDockWidget>
 #include <QTreeView>
 #include <QSemaphore>
-#include "OctaveLink.h"
+#include "octavelink.h"
 
 class WorkspaceView:public QDockWidget
 {

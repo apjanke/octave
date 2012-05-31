@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "TerminalDockWidget.h"
+#include "terminaldockwidget.h"
 
 TerminalDockWidget::TerminalDockWidget (QTerminal *terminal, QWidget *parent)
   : QDockWidget (parent)

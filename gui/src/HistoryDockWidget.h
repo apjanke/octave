@@ -22,7 +22,7 @@
 #include <QLineEdit>
 #include <QListView>
 #include <QSortFilterProxyModel>
-#include "OctaveLink.h"
+#include "octavelink.h"
 
 class HistoryDockWidget:public QDockWidget
 {
